@@ -7,7 +7,7 @@ import { typeDefs } from "./schema";
 
 const mocks = {
   Query: () => ({
-    tracksForHome: () => [...new Array(6)]
+    tracksForHome: () => [...new Array(6)],
   }),
   Track: () => ({
     id: () => "track_01",
@@ -24,14 +24,14 @@ const mocks = {
     length: () => 1210,
     modulesCount: () => 6,
   }),
-}
+};
 
 async function startApolloServer() {
   const server = new ApolloServer({
     schema: addMocksToSchema({
       schema: makeExecutableSchema({ typeDefs }),
-      mocks
-    })
+      mocks,
+    }),
   });
   const { url } = await startStandaloneServer(server);
 
